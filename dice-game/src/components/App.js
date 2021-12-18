@@ -11,14 +11,14 @@ class App extends React.Component {
     isWinner: false,
     players: [
       { id:1,
-        currentScores: 0,
-        totalScores: 0,
+        currentScore: 0,
+        totalScore: 0,
         isTurn:false ,
       },
       {
         id:2,
-        currentScores: 0,
-        totalScores: 0,
+        currentScore: 0,
+        totalScore: 0,
         isTurn:true ,
       },
     ],
@@ -41,11 +41,13 @@ class App extends React.Component {
    
   };
   render() {
+
+   
     return (
       <div className="mainContainer">
-        <Player />
+        <Player playerData={this.state.players[0]} />
         <GameBoard rollDice={this.rollDice} />
-        <Player playerData={this.state.players[1]}/>
+        <Player playerData={this.state.players[1]} />
       </div>
     );
   }
