@@ -10,18 +10,20 @@ const getRandomNumber = () => {
 };
 
 class gameBoard extends React.Component {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
+
+ 
   state = {
-    random1: null,
-    random2: null,
+    diceFace1: null,
+    diceFace2: null,
   };
   rollDice = () => {
     let random1 = getRandomNumber();
     let random2 = getRandomNumber();
+    this.setState({
+      diceFace1: `face${random1}`,
+      diceFace2: `face${random2}`,
+    });
+
     console.log(random1);
     console.log(random2);
 
@@ -37,8 +39,8 @@ class gameBoard extends React.Component {
     return (
       <div className="gameBoard">
         <div className="newGame"></div>
-        <div className="dice face1"></div>
-        <div className="dice face1"></div>
+        <div className={`dice ${this.state.diceFace1}`}></div>
+        <div className={`dice ${this.state.diceFace2}`}></div>
         <div className="hold"></div>
         <div className="roll" onClick={this.rollDice}>
           roll dice
