@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
+import { useState } from "react";
 
 const updatePlayers=(playersArr,playerNum,total)=>{
 
@@ -39,9 +40,14 @@ class App extends React.Component {
     ],
   };
 
+
   changeTurn = (childData) => {
     let playerNum = this.state.PlayerTurn;
     let currentPlayer = this.state.players[playerNum];
+   // [playerNum,currentPlayer]=useState();
+
+   
+    console.log("currentPlayer : "+ currentPlayer)
     let total = currentPlayer.totalScore;
     total += childData;
     console.log("child : " + total);
@@ -65,7 +71,6 @@ class App extends React.Component {
         <Player playerData={this.state.players[0]} />
         <GameBoard
           changeTurn={this.changeTurn}
-          //player={this.state.PlayerTurn}
         />
         <Player playerData={this.state.players[1]} />
       </div>

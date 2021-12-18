@@ -14,42 +14,46 @@ class gameBoard extends React.Component {
     diceFace1: null,
     diceFace2: null,
     //player: this.props.player,
-    dicesSum: 0,
+    dicesSum: null,
     turnTotalScore: 0,
   };
 
   rollDice = () => {
     let random1 = getRandomNumber();
     let random2 = getRandomNumber();
-    let tempSum= random1 + random2 ; 
-    //console.log("temp sum : "+ tempSum);
+    let turnSum = random1 + random2;
+    console.log("turnSum : " + turnSum);
     this.setState({
       diceFace1: `face${random1}`,
       diceFace2: `face${random2}`,
-      dicesSum: random1 + random2 ,
+      dicesSum: turnSum,
     });
-    console.log(this.state.dicesSum)
+
     if (this.state.dicesSum === zeroSum) {
       this.setState({
         turnTotalScore: 0,
       });
     } else {
-      let tempCurrent = this.state.turnTotalScore ; 
-      tempCurrent+=tempSum ; 
+      let tempCurrent = this.state.turnTotalScore;
+      tempCurrent += turnSum;
       this.setState({
         turnTotalScore: tempCurrent,
       });
     }
   };
 
-
-
   changeTurn = () => {
     this.props.changeTurn(this.state.turnTotalScore);
+    this.setState({
+      dicesSum: 0,
+      turnTotalScore: 0,
+    });
   };
 
   componentDidMount = () => {};
   componentDidUpdate = () => {
+    console.log("dice sum : " + this.state.dicesSum);
+    console.log("turn total  sum : " + this.state.turnTotalScore);
     //console.log(this.state.turnTotalScore)
   };
 
