@@ -3,25 +3,29 @@ import "./App.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
 import { useState } from "react";
-
-const updatePlayers = (playersArr, playerNum,score,updateTurnScore) => {
+const tempScore=((playersArr, playerNum,tempScore)=>{
   let UpdatePlayers = playersArr.map(function (player) {
 
-    if(updateTurnScore){
-
       if (player.id === playerNum) {
-        player.currentScore += score;
+        player.currentScore = tempScore;
         return player;
       } else {
         return player;
       }
-    }
+    
+  });
+
+  return UpdatePlayers;
+});
+const updatePlayers = (playersArr, playerNum,Totalscore) => {
+  let UpdatePlayers = playersArr.map(function (player) {
+
     if (player.id === playerNum) {
-      player.totalScore += score;
+      player.totalScore += Totalscore;
+      player.currentScore = 0;
       player.isTurn= false;
       return player;
     } else {
-      
       player.isTurn = true;
       return player;
     }
@@ -37,7 +41,7 @@ const changePlayer = (playerNum) => {
 class App extends React.Component {
   state = {
     pointsTowin: 20,
-    turnSum: null,
+    turnSum: 0,
     PlayerTurn: 1,
     isWinner: false,
     players: [
@@ -50,13 +54,12 @@ class App extends React.Component {
       },
     ],
   };
-    turnScore = (turnScore) => {
+  rollDice = (turnScore) => {
     this.setState({
-      players: updatePlayers(
+      players: tempScore(
         this.state.players,
         this.state.PlayerTurn,
         turnScore,
-        true
       ),
     });
   };
@@ -66,7 +69,6 @@ class App extends React.Component {
         this.state.players,
         this.state.PlayerTurn,
         turnsTotalScore,
-        false
       ),
       PlayerTurn: changePlayer(this.state.PlayerTurn),
     });
@@ -74,12 +76,13 @@ class App extends React.Component {
   componentDidMount = () => {};
   componentDidUpdate = () => {
     console.log(this.state.players);
+    
   };
   render() {
     return (
       <div className="mainContainer">
         <Player playerData={this.state.players} playerIdx={0} />
-        <GameBoard changeTurn={this.changeTurn} turnScore={this.turnScore} />
+        <GameBoard changeTurn={this.changeTurn} rollDice={this.rollDice} />
         <Player playerData={this.state.players} playerIdx={1} />
       </div>
     );
