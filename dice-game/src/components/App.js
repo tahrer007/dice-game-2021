@@ -3,27 +3,34 @@ import "./App.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
 import { useState } from "react";
-const tempScore=((playersArr, playerNum,tempScore)=>{
-  let UpdatePlayers = playersArr.map(function (player) {
 
-      if (player.id === playerNum) {
-        player.currentScore = tempScore;
-        return player;
-      } else {
-        return player;
-      }
-    
+//import { isMobileOnly, isTablet, withOrientationChange } from 'react-device-detect';
+
+
+const checkWinner = (players) => {
+  players.forEach((element) => {
+    if( element.totalScore>=20) return true ;  
+  });
+  return false ; 
+};
+const tempScore = (playersArr, playerNum, tempScore) => {
+  let UpdatePlayers = playersArr.map(function (player) {
+    if (player.id === playerNum) {
+      player.currentScore = tempScore;
+      return player;
+    } else {
+      return player;
+    }
   });
 
   return UpdatePlayers;
-});
-const updatePlayers = (playersArr, playerNum,Totalscore) => {
+};
+const updatePlayers = (playersArr, playerNum, Totalscore) => {
   let UpdatePlayers = playersArr.map(function (player) {
-
     if (player.id === playerNum) {
       player.totalScore += Totalscore;
       player.currentScore = 0;
-      player.isTurn= false;
+      player.isTurn = false;
       return player;
     } else {
       player.isTurn = true;
@@ -39,6 +46,7 @@ const changePlayer = (playerNum) => {
 };
 
 class App extends React.Component {
+
   state = {
     pointsTowin: 20,
     turnSum: 0,
@@ -56,27 +64,33 @@ class App extends React.Component {
   };
   rollDice = (turnScore) => {
     this.setState({
-      players: tempScore(
-        this.state.players,
-        this.state.PlayerTurn,
-        turnScore,
-      ),
+      players: tempScore(this.state.players, this.state.PlayerTurn, turnScore),
     });
   };
   changeTurn = (turnsTotalScore) => {
-    this.setState({
-      players: updatePlayers(
-        this.state.players,
-        this.state.PlayerTurn,
-        turnsTotalScore,
-      ),
-      PlayerTurn: changePlayer(this.state.PlayerTurn),
-    });
+      this.setState({
+        players: updatePlayers(
+          this.state.players,
+          this.state.PlayerTurn,
+          turnsTotalScore
+        ),
+        PlayerTurn: changePlayer(this.state.PlayerTurn),
+      });
+  
   };
-  componentDidMount = () => {};
+  componentDidMount = () => {
+
+
+  };
   componentDidUpdate = () => {
+   /* this.setState({
+      isWinner: checkWinner(this.state.players),
+    });*/
+    if (!this.state.isWinner) {
+      console.log("whos win i dont khow from componentDidUpdate !!");
+    }
+
     console.log(this.state.players);
-    
   };
   render() {
     return (
