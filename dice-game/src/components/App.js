@@ -3,8 +3,23 @@ import "./App.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
 
-const updatePlayers=(playersArr)=>{
+const updatePlayers=(playersArr,playerNum,total)=>{
 
+  let UpdatePlayers = playersArr.map(function (player) {
+    if (player.id === playerNum) {
+      player.totalScore = total;
+      player.isTurn = false;
+      return player;
+    } else {
+      player.isTurn = true;
+      return player};
+  });
+
+  return UpdatePlayers ; 
+}
+const chengePlayer=(playerNum)=>{
+  if(playerNum===1)return 2 ; 
+  else return 1 ; 
 }
 
 class App extends React.Component {
@@ -12,9 +27,9 @@ class App extends React.Component {
     pointsTowin: 20,
     turnSum: null,
     PlayerTurn: 1,
-    isWinner: true,
+    isWinner: false,
     players: [
-      { id: 1, currentScore: 0, totalScore: 0, isTurn: false },
+      { id: 1, currentScore: 0, totalScore: 0, isTurn: true },
       {
         id: 2,
         currentScore: 0,
@@ -30,17 +45,10 @@ class App extends React.Component {
     let total = currentPlayer.totalScore;
     total += childData;
     console.log("child : " + total);
-    let UpdatePlayers = this.state.players.map(function (player) {
-      if (player.id === playerNum) {
-        player.totalScore = total;
-        player.isTurn = false;
-        return player;
-      } else {
-        player.isTurn = true;
-        return player};
-    });
+    let UpdatePlayers = updatePlayers(this.state.players,playerNum,total) ; 
     this.setState({
       players: UpdatePlayers,
+      PlayerTurn:chengePlayer(playerNum),
     });
 
     //console.log("the test"+this.state.players[this.state.PlayerTurn].totalScore);
@@ -49,6 +57,7 @@ class App extends React.Component {
   componentDidUpdate = () => {
     console.log("update!!!");
     console.log(this.state.players);
+    console.log( "player turn : " + this.state.PlayerTurn);
   };
   render() {
     return (
@@ -56,7 +65,7 @@ class App extends React.Component {
         <Player playerData={this.state.players[0]} />
         <GameBoard
           changeTurn={this.changeTurn}
-          player={this.state.PlayerTurn}
+          //player={this.state.PlayerTurn}
         />
         <Player playerData={this.state.players[1]} />
       </div>

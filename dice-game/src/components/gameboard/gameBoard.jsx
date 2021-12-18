@@ -13,7 +13,7 @@ class gameBoard extends React.Component {
   state = {
     diceFace1: null,
     diceFace2: null,
-    player: this.props.player,
+    //player: this.props.player,
     dicesSum: 0,
     turnTotalScore: 0,
   };
@@ -26,7 +26,7 @@ class gameBoard extends React.Component {
     this.setState({
       diceFace1: `face${random1}`,
       diceFace2: `face${random2}`,
-      dicesSum: tempSum,
+      dicesSum: random1 + random2 ,
     });
     console.log(this.state.dicesSum)
     if (this.state.dicesSum === zeroSum) {

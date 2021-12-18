@@ -13,6 +13,8 @@ class Player extends React.Component {
   };
 
   render() {
+
+    console.log(this.state.isTurn)
     return (
       <div className={`playerBoard ${isPlaying(this.state.isTurn)}`}>
         <div className="player center">Player {this.state.id}</div>
