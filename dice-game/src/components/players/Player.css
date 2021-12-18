@@ -1,0 +1,34 @@
+.playerBoard{
+    height: 90%;
+    width:25%; 
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.player{ 
+    height:3em ; 
+    width: 80%;
+    background-color: green;
+    margin: 1em;
+
+}
+
+.totalScore{
+    height:3em ; 
+    width: 80%;
+    background-color: green;
+    margin: 1em;
+
+}
+.currentScore{
+    height:3em ; 
+    width: 80%;
+    background-color: green;
+    margin: 1em;
+
+}

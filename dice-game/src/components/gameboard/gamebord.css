@@ -1,0 +1,43 @@
+.gameBoard{
+    height: 90%;
+    width:35%; 
+    background-color: red;
+    margin: 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.newGame{
+height: 2em ; 
+width: 2em;
+background-color: cadetblue;
+margin: 1em;
+}
+.dice{
+    height: 10em ; 
+    width: 10em;
+    background-color: green;
+    margin: 1em;
+}
+.dice1{
+
+}
+.dice2{
+    
+}
+.hold{ 
+    height:3em ; 
+    width: 80%;
+    background-color: green;
+    margin: 1em;
+
+}
+.roll{
+    height:3em ; 
+    width: 80%;
+    background-color: green;
+    margin: 1em;
+}
