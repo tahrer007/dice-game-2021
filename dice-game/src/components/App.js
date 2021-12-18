@@ -6,7 +6,7 @@ import Player from "./players/Player";
 class App extends React.Component {
   state = {
     pointsTowin: 20,
-    dices: [null, null],
+    dicesSum: null,
     PlayerTurn: 1,
     isWinner: false,
     players: [
@@ -21,12 +21,13 @@ class App extends React.Component {
     ],
   };
   rollDice = (childData) => {
-    this.setState({ dices: childData });
+    this.setState({ dicesSum: childData });
   };
   componentDidMount = () => {};
   componentDidUpdate = () => {
     console.log("update!!!");
-    console.log(this.state.dices);
+    console.log(this.state.dicesSum);
+   
   };
   render() {
     return (

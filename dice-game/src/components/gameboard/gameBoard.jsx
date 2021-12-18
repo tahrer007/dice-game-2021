@@ -23,13 +23,10 @@ class gameBoard extends React.Component {
       diceFace1: `face${random1}`,
       diceFace2: `face${random2}`,
     });
-
-    console.log(random1);
-    console.log(random2);
-
-    if (random1 === 6 && random2 === 6) {
-      this.props.rollDice([0, 0]);
-    } else this.props.rollDice([random1, random2]);
+    let sum = random2+random1
+    if (sum===12) {
+      this.props.rollDice(0);
+    } else this.props.rollDice(sum);
   };
 
   componentDidMount = () => {};
