@@ -1,6 +1,6 @@
 import React from "react";
 import "./gamebord.css";
-
+const zeroSum = 12 ; 
 const getRandomNumber = () => {
   let min = 1;
   let max = 7;
@@ -10,8 +10,6 @@ const getRandomNumber = () => {
 };
 
 class gameBoard extends React.Component {
-
- 
   state = {
     diceFace1: null,
     diceFace2: null,
@@ -23,8 +21,8 @@ class gameBoard extends React.Component {
       diceFace1: `face${random1}`,
       diceFace2: `face${random2}`,
     });
-    let sum = random2+random1
-    if (sum===12) {
+    const sum = random2 + random1;
+    if (sum === zeroSum) {
       this.props.rollDice(0);
     } else this.props.rollDice(sum);
   };
@@ -38,7 +36,7 @@ class gameBoard extends React.Component {
         <div className="newGame"></div>
         <div className={`dice ${this.state.diceFace1}`}></div>
         <div className={`dice ${this.state.diceFace2}`}></div>
-        <div className="hold"></div>
+        <div className="hold"> hold</div>
         <div className="roll" onClick={this.rollDice}>
           roll dice
         </div>
