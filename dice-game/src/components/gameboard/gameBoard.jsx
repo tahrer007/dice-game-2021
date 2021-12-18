@@ -22,7 +22,6 @@ class gameBoard extends React.Component {
     let random1 = getRandomNumber();
     let random2 = getRandomNumber();
     let turnSum = random1 + random2;
-    console.log("turnSum : " + turnSum);
     this.setState({
       diceFace1: `face${random1}`,
       diceFace2: `face${random2}`,
