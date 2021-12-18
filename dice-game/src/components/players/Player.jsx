@@ -12,6 +12,17 @@ class Player extends React.Component {
     totalScore: this.props.playerData[this.props.playerIdx].totalScore,
     currentScore: this.props.playerData[this.props.playerIdx].currentScore,
   };
+  /*componentDidUpdate = (nextProps) => {
+    this.setState({
+      id: nextProps.playerData[this.props.playerIdx].id,
+      isTurn: nextProps.playerData[this.props.playerIdx].isTurn,
+      totalScore: nextProps.playerData[this.props.playerIdx].totalScore,
+      currentScore:nextProps.playerData[this.props.playerIdx].currentScore,
+      });  
+  };*/
+// *******************
+//TODO : USE ANOTHER WAY TO RE-REND 
+// *******************
   componentWillReceiveProps(nextProps) {
     this.setState({
       id: nextProps.playerData[this.props.playerIdx].id,
