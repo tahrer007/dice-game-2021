@@ -10,18 +10,29 @@ class App extends React.Component {
     PlayerTurn: 1,
     isWinner: false,
     players: [
-      {
+      { id:1,
         currentScores: 0,
         totalScores: 0,
+        isTurn:false ,
       },
       {
+        id:2,
         currentScores: 0,
         totalScores: 0,
+        isTurn:true ,
       },
     ],
   };
+
+  changeTurn = (childData) => {
+    this.setState(
+      { PlayerTurn: childData });
+  };
   rollDice = (childData) => {
-    this.setState({ dicesSum: childData });
+    this.setState({ dicesSum: childData ,  }
+      
+      
+      );
   };
   componentDidMount = () => {};
   componentDidUpdate = () => {
@@ -34,7 +45,7 @@ class App extends React.Component {
       <div className="mainContainer">
         <Player />
         <GameBoard rollDice={this.rollDice} />
-        <Player />
+        <Player playerData={this.state.players[1]}/>
       </div>
     );
   }
