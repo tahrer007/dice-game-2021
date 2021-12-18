@@ -2,7 +2,11 @@ import React from "react";
 import "./App.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
-import { useState } from "react";
+import { useMediaQuery } from 'react-responsive'
+import {BrowserView, MobileView} from 'react-device-detect';
+
+
+
 
 //import { isMobileOnly, isTablet, withOrientationChange } from 'react-device-detect';
 
@@ -79,7 +83,8 @@ class App extends React.Component {
   
   };
   componentDidMount = () => {
-
+    /*const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+    console.log( "screen size  " + isTabletOrMobile)*/
 
   };
   componentDidUpdate = () => {
