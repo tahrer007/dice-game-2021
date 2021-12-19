@@ -34,6 +34,8 @@
 }
 .waiting{
 
+  background-color: orchid;
+
 }
 .roll {
   height: 3em;
@@ -71,4 +73,5 @@
   .face6 {
     background-image: url(../assets/image/6.jpeg);
   }
+  
   

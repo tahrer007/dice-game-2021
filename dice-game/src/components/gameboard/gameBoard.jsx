@@ -1,5 +1,6 @@
 import React from "react";
 import "./gamebord.css";
+import "./loader.css";
 import "../mediaQuery/mobile.css";
 const zeroSum = 12;
 const getRandomNumber = () => {
@@ -12,21 +13,29 @@ const getRandomNumber = () => {
 class gameBoard extends React.Component {
   sum = 0;
   state = {
-    diceFace1: null,
+    diceFace1:null,
     diceFace2: null,
     turnTotalScore: 0,
   };
 
   rollDice = () => {
+
+    this.setState({
+      diceFace1: 'loader',
+      diceFace2: 'loader',
+
+    }); 
+
     let random1 = getRandomNumber();
     let random2 = getRandomNumber();
     let dicesSum = random1 + random2 ; 
+    setTimeout(() => {
+      this.setState({
+        diceFace1: `face${random1}`,
+        diceFace2: `face${random2}`,
+      });
+    }, 500);
 
-    this.setState({
-      diceFace1: `face${random1}`,
-      diceFace2: `face${random2}`,
-
-    }); 
     if (dicesSum === zeroSum) {
       this.setState({
         turnTotalScore: 0,
