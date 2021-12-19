@@ -1,0 +1,11 @@
+@media (max-width: 600px) {
+    
+    .player{
+        font-size: 20px;
+    }
+    .dice{
+        height: 200px;
+        width: 200px;
+    } 
+      
+}

@@ -9,6 +9,9 @@
   box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   
 }
+.hide{
+  visibility: hidden;
+}
 
 
 .dice {
@@ -16,6 +19,7 @@
   width: 10em;
   margin: 1em;
   background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
 }
@@ -33,10 +37,22 @@
 }
 .roll {
   height: 3em;
-  width: 80%;
-
+  width: fit-content;
+  background-image:url(../assets/image/roll.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:center;
   margin: 1em;
 }
+.roll:hover{
+  width: 70px;
+    height: 74px;
+}
+.hold:hover{
+  width: 70px;
+    height: 74px;
+}
+
 .face1 {
   background-image: url(../assets/image/1.jpeg);
 }

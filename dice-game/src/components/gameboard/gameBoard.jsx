@@ -1,5 +1,6 @@
 import React from "react";
 import "./gamebord.css";
+import "../mediaQuery/mobile.css";
 const zeroSum = 12;
 const getRandomNumber = () => {
   let min = 1;
@@ -64,7 +65,7 @@ class gameBoard extends React.Component {
         </div>
         <div className="roll" onClick={this.rollDice}>
         {" "}
-          roll dice
+         <span className="hide">hide content</span>
         </div>
       </div>
     );
