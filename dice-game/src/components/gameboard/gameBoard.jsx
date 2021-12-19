@@ -2,6 +2,9 @@ import React from "react";
 import "./gamebord.css";
 import "./loader.css";
 import "../mediaQuery/mobile.css";
+import sound from "../assets/sounds/reset.mp3"
+
+//import rollSound from '../../sounds/boop.mp3';
 const zeroSum = 12;
 const getRandomNumber = () => {
   let min = 1;
@@ -9,6 +12,9 @@ const getRandomNumber = () => {
   let random = Math.floor(Math.random() * (max - min) + min);
   return random;
 };
+ const playAudio = () => {
+  new Audio(sound).play();
+}
 
 class gameBoard extends React.Component {
   sum = 0;
@@ -17,13 +23,14 @@ class gameBoard extends React.Component {
     diceFace2: null,
     turnTotalScore: 0,
   };
+  
+   
 
   rollDice = () => {
-
+    playAudio()
     this.setState({
       diceFace1: 'loader',
       diceFace2: 'loader',
-
     }); 
 
     let random1 = getRandomNumber();

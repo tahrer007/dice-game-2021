@@ -63,6 +63,7 @@ const changePlayer = (playerNum) => {
 
 class App extends React.Component {
   constructor(props) {
+    
     super(props);
     this.state = {
       pointsTowin: 20,
@@ -123,13 +124,7 @@ class App extends React.Component {
     this.baseState = this.state;
   };
   componentDidUpdate = () => {
-    /* this.setState({
-      isWinner: checkWinner(this.state.players),
-    });*/
-
-    //console.log(this.state.players);
-    console.log("base state : ");
-    console.log(this.baseState);
+ 
   };
   render() {
     return (
