@@ -56,7 +56,6 @@ class gameBoard extends React.Component {
   render() {
     return (
       <div className="gameBoard">
-        <div className="newGame"></div>
         <div className={`dice ${this.state.diceFace1}`}></div>
         <div className={`dice ${this.state.diceFace2}`}></div>
         <div className="hold" onClick={this.changeTurn}>

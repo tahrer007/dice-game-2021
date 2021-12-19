@@ -2,20 +2,18 @@ import React from "react";
 import "./App.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
-import { useMediaQuery } from 'react-responsive'
-import {BrowserView, MobileView} from 'react-device-detect';
-
-
-
+import IsMobileOrTablet from "./mediaQuery/mobile.jsx"
 
 //import { isMobileOnly, isTablet, withOrientationChange } from 'react-device-detect';
+
+  
 
 
 const checkWinner = (players) => {
   players.forEach((element) => {
-    if( element.totalScore>=20) return true ;  
+    if (element.totalScore >= 20) return true;
   });
-  return false ; 
+  return false;
 };
 const tempScore = (playersArr, playerNum, tempScore) => {
   let UpdatePlayers = playersArr.map(function (player) {
@@ -50,7 +48,6 @@ const changePlayer = (playerNum) => {
 };
 
 class App extends React.Component {
-
   state = {
     pointsTowin: 20,
     turnSum: 0,
@@ -66,29 +63,28 @@ class App extends React.Component {
       },
     ],
   };
+  
   rollDice = (turnScore) => {
     this.setState({
       players: tempScore(this.state.players, this.state.PlayerTurn, turnScore),
     });
   };
   changeTurn = (turnsTotalScore) => {
-      this.setState({
-        players: updatePlayers(
-          this.state.players,
-          this.state.PlayerTurn,
-          turnsTotalScore
-        ),
-        PlayerTurn: changePlayer(this.state.PlayerTurn),
-      });
-  
+    this.setState({
+      players: updatePlayers(
+        this.state.players,
+        this.state.PlayerTurn,
+        turnsTotalScore
+      ),
+      PlayerTurn: changePlayer(this.state.PlayerTurn),
+    });
   };
   componentDidMount = () => {
     /*const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
     console.log( "screen size  " + isTabletOrMobile)*/
-
   };
   componentDidUpdate = () => {
-   /* this.setState({
+    /* this.setState({
       isWinner: checkWinner(this.state.players),
     });*/
     if (!this.state.isWinner) {
@@ -98,8 +94,12 @@ class App extends React.Component {
     console.log(this.state.players);
   };
   render() {
+   
     return (
+
+      
       <div className="mainContainer">
+        <div className="newGame"   onClick={this.reset}></div>
         <Player playerData={this.state.players} playerIdx={0} />
         <GameBoard changeTurn={this.changeTurn} rollDice={this.rollDice} />
         <Player playerData={this.state.players} playerIdx={1} />

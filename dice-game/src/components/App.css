@@ -9,5 +9,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(./assets/image/background.jpg);
+    position: relative;
 }
-
+.newGame {
+    height: 3em;
+    width: 3em;
+    background-color: cadetblue;
+    margin: 1em;
+    top:0 ;
+    left:50% ; 
+    position: absolute;
+  }

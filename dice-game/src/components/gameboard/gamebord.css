@@ -7,14 +7,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
-.newGame {
-  height: 2em;
-  width: 2em;
-  background-color: cadetblue;
-  margin: 1em;
-}
+
 .dice {
   height: 10em;
   width: 10em;
@@ -30,6 +26,9 @@
   background-color: green;
   margin: 1em;
 }
+.waiting{
+
+}
 .roll {
   height: 3em;
   width: 80%;
@@ -37,21 +36,21 @@
   margin: 1em;
 }
 .face1 {
-  background-image: url(./assets/image/1.jpeg);
+  background-image: url(../assets/image/1.jpeg);
 }
 .face2 {
-    background-image: url(./assets/image/2.jpeg);
+    background-image: url(../assets/image/2.jpeg);
   }
   .face3{
-    background-image: url(./assets/image/3.jpeg);
+    background-image: url(../assets/image/3.jpeg);
   }
   .face4 {
-    background-image: url(./assets/image/4.jpeg);
+    background-image: url(../assets/image/4.jpeg);
   }
   .face5 {
-    background-image: url(./assets/image/5.jpeg);
+    background-image: url(../assets/image/5.jpeg);
   }
   .face6 {
-    background-image: url(./assets/image/6.jpeg);
+    background-image: url(../assets/image/6.jpeg);
   }
   
