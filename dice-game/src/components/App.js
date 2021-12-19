@@ -2,12 +2,26 @@ import React from "react";
 import "./App.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
-import IsMobileOrTablet from "./mediaQuery/mobile.jsx"
+import IsMobileOrTablet from "./mediaQuery/mobile.jsx";
+import { useState } from "react";
+
+/*const initialState = {
+  pointsTowin: 20,
+  turnSum: 0,
+  PlayerTurn: 1,
+  isWinner: false,
+  players: [
+    { id: 1, currentScore: 0, totalScore: 0, isTurn: true },
+    {
+      id: 2,
+      currentScore: 0,
+      totalScore: 0,
+      isTurn: false,
+    },
+  ],
+};*/
 
 //import { isMobileOnly, isTablet, withOrientationChange } from 'react-device-detect';
-
-  
-
 
 const checkWinner = (players) => {
   players.forEach((element) => {
@@ -48,7 +62,28 @@ const changePlayer = (playerNum) => {
 };
 
 class App extends React.Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pointsTowin: 20,
+      turnSum: 0,
+      PlayerTurn: 1,
+      isWinner: false,
+      players: [
+        { id: 1, currentScore: 0, totalScore: 0, isTurn: true },
+        {
+          id: 2,
+          currentScore: 0,
+          totalScore: 0,
+          isTurn: false,
+        },
+      ],
+    };
+    // preserve the initial state in a new object
+    this.baseState = this.state;
+  }
+
+  /*state = {
     pointsTowin: 20,
     turnSum: 0,
     PlayerTurn: 1,
@@ -63,7 +98,12 @@ class App extends React.Component {
       },
     ],
   };
-  
+  baseState = this.state */
+
+  reset = () => {
+    this.setState(this.baseState);
+  };
+
   rollDice = (turnScore) => {
     this.setState({
       players: tempScore(this.state.players, this.state.PlayerTurn, turnScore),
@@ -80,26 +120,21 @@ class App extends React.Component {
     });
   };
   componentDidMount = () => {
-    /*const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
-    console.log( "screen size  " + isTabletOrMobile)*/
+    this.baseState = this.state;
   };
   componentDidUpdate = () => {
     /* this.setState({
       isWinner: checkWinner(this.state.players),
     });*/
-    if (!this.state.isWinner) {
-      console.log("whos win i dont khow from componentDidUpdate !!");
-    }
 
-    console.log(this.state.players);
+    //console.log(this.state.players);
+    console.log("base state : ");
+    console.log(this.baseState);
   };
   render() {
-   
     return (
-
-      
       <div className="mainContainer">
-        <div className="newGame"   onClick={this.reset}></div>
+        <div className="newGame" onClick={this.reset}></div>
         <Player playerData={this.state.players} playerIdx={0} />
         <GameBoard changeTurn={this.changeTurn} rollDice={this.rollDice} />
         <Player playerData={this.state.players} playerIdx={1} />

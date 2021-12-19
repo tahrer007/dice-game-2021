@@ -60,7 +60,7 @@ class gameBoard extends React.Component {
         <div className={`dice ${this.state.diceFace2}`}></div>
         <div className="hold" onClick={this.changeTurn}>
           {" "}
-          hold
+      
         </div>
         <div className="roll" onClick={this.rollDice}>
         {" "}

@@ -36,12 +36,13 @@ class Player extends React.Component {
     //console.log(this.props.playerData[this.props.playerIdx])
    // console.log("index : "+this.props.playerIdx)
     return (
-      <div className={`playerBoard ${isPlaying(this.state.isTurn)}`}>
-        <div className="player center"> Player {this.state.id}</div>
+      <div className= "playerBoard">
+     
+     <div className={`player center ${isPlaying(this.state.isTurn)}`}> Player {this.state.id}</div>
         <h3>toltal score : </h3>
         <div className="totalScore center">{this.state.totalScore}</div>
         <h3>current score : </h3>
-        <div className="currentScore center">{this.state.currentScore}</div>
+        <div className= {`currentScore center ${isPlaying(this.state.isTurn)}`}>{this.state.currentScore}</div>
       </div>
     );
   }

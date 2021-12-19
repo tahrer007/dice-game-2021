@@ -1,11 +1,11 @@
 .playerBoard{
     height: 90%;
     width:25%; 
-    background-color: blue;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
     
 }
 
@@ -13,12 +13,20 @@
 .player{ 
     height:3em ; 
     width: 80%;
-    background-color: green;
     margin: 1em;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    font-size: 3em;
 
 }
 .playing{
-   background-color: red; 
+   color: orangered;
+  
 }
 .center{
     text-align: center;
@@ -28,14 +36,20 @@
 .totalScore{
     height:3em ; 
     width: 80%;
-    background-color: green;
     margin: 1em;
+    font-size: 2em;
       
 
 }
 .currentScore{
     height:3em ; 
     width: 80%;
-    background-color: green;
+ 
     margin: 1em;
+    font-size: 2em;
+}
+.playerBoard h3{
+    font-size: 3em;
+    color : white;
+
 }

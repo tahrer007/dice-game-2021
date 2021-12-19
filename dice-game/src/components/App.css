@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
 }
+@font-face {
+    font-family: HarryPotter;
+    src: url(./assets/fonts/HARRYP__.TTF);
+  }
 .mainContainer{
     background-color: aquamarine;
     height: 100vh;
@@ -9,15 +13,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(./assets/image/background.jpg);
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     position: relative;
+    font-family: HarryPotter;
+    letter-spacing: 0.1em;
 }
 .newGame {
     height: 3em;
     width: 3em;
-    background-color: cadetblue;
     margin: 1em;
     top:0 ;
     left:50% ; 
     position: absolute;
+    background-image: url(./assets/image/restart.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
   }
+
+  .newGame:active {
+    width: 70px;
+    height: 74px;
+}

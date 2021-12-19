@@ -1,12 +1,12 @@
 .gameBoard {
   height: 90%;
   width: 35%;
-  background-color: red;
   margin: 0 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   
 }
 
@@ -14,7 +14,6 @@
 .dice {
   height: 10em;
   width: 10em;
-  background-color: green;
   margin: 1em;
   background-size: contain;
   background-position: center;
@@ -23,8 +22,11 @@
 .hold {
   height: 3em;
   width: 80%;
-  background-color: green;
   margin: 1em;
+  background-image:url(../assets/image/switch.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:center;
 }
 .waiting{
 
@@ -32,7 +34,7 @@
 .roll {
   height: 3em;
   width: 80%;
-  background-color: green;
+
   margin: 1em;
 }
 .face1 {
