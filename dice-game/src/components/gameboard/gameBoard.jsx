@@ -2,7 +2,7 @@ import React from "react";
 import "./gamebord.css";
 import "./loader.css";
 import "../mediaQuery/mobile.css";
-import sound from "../assets/sounds/reset.mp3"
+import rollSound from "../assets/sounds/reset.mp3"
 
 //import rollSound from '../../sounds/boop.mp3';
 const zeroSum = 12;
@@ -13,7 +13,7 @@ const getRandomNumber = () => {
   return random;
 };
  const playAudio = () => {
-  new Audio(sound).play();
+  new Audio(rollSound).play();
 }
 
 class gameBoard extends React.Component {

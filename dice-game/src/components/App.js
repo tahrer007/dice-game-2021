@@ -5,28 +5,14 @@ import Player from "./players/Player";
 import IsMobileOrTablet from "./mediaQuery/mobile.jsx";
 import { useState } from "react";
 
-/*const initialState = {
-  pointsTowin: 20,
-  turnSum: 0,
-  PlayerTurn: 1,
-  isWinner: false,
-  players: [
-    { id: 1, currentScore: 0, totalScore: 0, isTurn: true },
-    {
-      id: 2,
-      currentScore: 0,
-      totalScore: 0,
-      isTurn: false,
-    },
-  ],
-};*/
-
-//import { isMobileOnly, isTablet, withOrientationChange } from 'react-device-detect';
-
-const checkWinner = (players) => {
-  players.forEach((element) => {
-    if (element.totalScore >= 20) return true;
-  });
+const checkWinner = (totalScore, winningScore, player) => {
+  console.log(totalScore);
+  console.log(winningScore);
+  if (totalScore >= winningScore) {
+    window.alert("player " + player + " is the winner");
+    //window.alert("please restart the game !!")
+    return true;
+  }
   return false;
 };
 const tempScore = (playersArr, playerNum, tempScore) => {
@@ -63,13 +49,12 @@ const changePlayer = (playerNum) => {
 
 class App extends React.Component {
   constructor(props) {
-    
     super(props);
     this.state = {
       pointsTowin: 20,
       turnSum: 0,
       PlayerTurn: 1,
-      isWinner: false,
+      gameOver: false,
       players: [
         { id: 1, currentScore: 0, totalScore: 0, isTurn: true },
         {
@@ -83,23 +68,6 @@ class App extends React.Component {
     // preserve the initial state in a new object
     this.baseState = this.state;
   }
-
-  /*state = {
-    pointsTowin: 20,
-    turnSum: 0,
-    PlayerTurn: 1,
-    isWinner: false,
-    players: [
-      { id: 1, currentScore: 0, totalScore: 0, isTurn: true },
-      {
-        id: 2,
-        currentScore: 0,
-        totalScore: 0,
-        isTurn: false,
-      },
-    ],
-  };
-  baseState = this.state */
 
   reset = () => {
     this.setState(this.baseState);
@@ -117,15 +85,23 @@ class App extends React.Component {
         this.state.PlayerTurn,
         turnsTotalScore
       ),
-      PlayerTurn: changePlayer(this.state.PlayerTurn),
+      gameOver: checkWinner(
+        turnsTotalScore,
+        this.state.pointsTowin,
+        this.state.PlayerTurn
+      ),
     });
+
+    if (!this.state.gameOver) {
+      this.setState({
+        PlayerTurn: changePlayer(this.state.PlayerTurn),
+      });
+    }
   };
   componentDidMount = () => {
     this.baseState = this.state;
   };
-  componentDidUpdate = () => {
- 
-  };
+  componentDidUpdate = () => {};
   render() {
     return (
       <div className="mainContainer">
