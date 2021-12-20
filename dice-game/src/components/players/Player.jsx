@@ -6,27 +6,31 @@ const isPlaying = (isplaying) => {
   else return "";
 };
 class Player extends React.Component {
+  state = {
+    id: this.props.playerData[this.props.playerIdx].id,
+    isTurn: this.props.playerData[this.props.playerIdx].isPlaying,
+    totalScore: this.props.playerData[this.props.playerIdx].totalScore,
+    currentScore: this.props.playerData[this.props.playerIdx].currentScore,
+  };
+  
+  // *******************
+  //TODO : USE ANOTHER WAY TO RE-REND
+  // *******************
+  
+
   render() {
+    //console.log(this.props.playerData[this.props.playerIdx])
+    // console.log("index : "+this.props.playerIdx)
     return (
       <div className="playerBoard">
-        <div
-          className={`player flexBoX ${isPlaying(
-            this.props.playerData[this.props.playerIdx].isPlaying
-          )}`}
-        >
+        <div className={`player flexBoX ${isPlaying(this.props.playerData[this.props.playerIdx].isPlaying)}`}>
           {" "}
           Player {this.props.playerData[this.props.playerIdx].id}
         </div>
         <h3>toltal score : </h3>
-        <div className="totalScore flexBoX">
-          {this.props.playerData[this.props.playerIdx].totalScore}
-        </div>
+        <div className="totalScore flexBoX">{this.props.playerData[this.props.playerIdx].totalScore}</div>
         <h3>current score : </h3>
-        <div
-          className={`currentScore flexBoX ${isPlaying(
-            this.props.playerData[this.props.playerIdx].isPlaying
-          )}`}
-        >
+        <div className={`currentScore flexBoX ${isPlaying(this.props.playerData[this.props.playerIdx].isPlaying)}`}>
           {this.props.playerData[this.props.playerIdx].currentScore}
         </div>
       </div>

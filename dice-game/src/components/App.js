@@ -6,9 +6,27 @@ import IsMobileOrTablet from "./mediaQuery/mobile.jsx";
 import { useState } from "react";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = this.getInitialState();
+    /*this.state = {
+      pointsTowin: 20,
+      zeroValue: 12,
+      dicesSum: 0,
+      dices: [null, null],
+      PlayerTurn: 1,
+      gameOver: false,
+      players: [
+        { id: 1, currentScore: 0, totalScore: 0, isPlaying: true },
+        {
+          id: 2,
+          currentScore: 0,
+          totalScore: 0,
+          isPlaying: false,
+        },
+      ],
+      
+    }*/
   }
 
   getInitialState() {
@@ -16,7 +34,7 @@ class App extends React.Component {
       pointsTowin: 20,
       zeroValue: 12,
       dicesSum: 0,
-      dices:[null,null],
+      dices: [null, null],
       PlayerTurn: 1,
       gameOver: false,
       players: [
@@ -43,43 +61,54 @@ class App extends React.Component {
     } else {
       playersArr[this.state.PlayerTurn - 1].currentScore += turnScore;
     }
-    this.setState({ playersArr });
+    this.setState({ players: playersArr });
   };
-
+  ///******************************************************************** */
   changeTurn = () => {
     let playersArr = this.state.players;
+    let tempTotalScores = playersArr[this.state.PlayerTurn - 1].totalScore;
     playersArr[this.state.PlayerTurn - 1].totalScore +=
       playersArr[this.state.PlayerTurn - 1].currentScore;
     playersArr[this.state.PlayerTurn - 1].currentScore = 0;
-    this.setState({ playersArr });
-    if (playersArr[this.state.PlayerTurn - 1].totalScore >= 20) {
+     /*this.setState({
+      players : playersArr,
+    });*/
+
+    if (tempTotalScores >= 20) {
+      console.log("yeeeeeees !!! ");
     } else {
+      console.log(playersArr)
       playersArr.forEach((player) => {
+        console.log(
+          "player is : " + player.id + " boolan : " + player.isPlaying
+        );
         player.isPlaying
           ? (player.isPlaying = false)
           : (player.isPlaying = true);
       });
 
       let changePlayer = this.state.PlayerTurn === 1 ? 2 : 1;
-      this.setState({
-        PlayerTurn: changePlayer,
-        playersArr,
-      });
+
+       this.setState({
+          PlayerTurn: changePlayer,
+          players : playersArr,
+        });
     }
   };
-  componentDidMount = () => {
-    this.baseState = this.state;
-  };
+  componentDidMount = () => {};
   componentDidUpdate = () => {
-    console.log(this.state.players);
-    console.log(this.baseState);
+    console.log(this.state);
   };
   render() {
     return (
       <div className="mainContainer">
         <div className="newGame" onClick={this.reset}></div>
         <Player playerData={this.state.players} playerIdx={0} />
-        <GameBoard changeTurn={this.changeTurn} rollDice={this.rollDice} dices={this.state.dices} />
+        <GameBoard
+          changeTurn={this.changeTurn}
+          rollDice={this.rollDice}
+          dices={this.state.dices}
+        />
         <Player playerData={this.state.players} playerIdx={1} />
       </div>
     );

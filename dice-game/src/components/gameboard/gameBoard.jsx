@@ -45,9 +45,10 @@ class gameBoard extends React.Component {
   };
 
   changeTurn = () => {
-    setTimeout(() => {
+    this.props.changeTurn();
+    /*setTimeout(() => {
       this.props.changeTurn();
-    }, 100);
+    }, 500);*/
   };
 
   componentDidMount = () => {};
