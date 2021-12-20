@@ -5,61 +5,65 @@ import Player from "./players/Player";
 import IsMobileOrTablet from "./mediaQuery/mobile.jsx";
 import { useState } from "react";
 
-const changePlayer = (playerNum) => {
-  if (playerNum === 1) return 2;
-  else return 1;
-};
-
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.getInitialState();
+  }
+
+  getInitialState() {
+    return {
       pointsTowin: 20,
       zeroValue: 12,
       dicesSum: 0,
+      dices:[null,null],
       PlayerTurn: 1,
       gameOver: false,
       players: [
-        { id: 1, currentScore: 0, totalScore: 0, isTurn: true },
+        { id: 1, currentScore: 0, totalScore: 0, isPlaying: true },
         {
           id: 2,
           currentScore: 0,
           totalScore: 0,
-          isTurn: false,
+          isPlaying: false,
         },
       ],
     };
-    // preserve the initial state in a new object
-    this.baseState = this.state;
   }
 
   reset = () => {
-    this.setState(this.baseState);
+    this.setState(this.getInitialState());
   };
 
   rollDice = (turnScore) => {
-    let playerArr = this.state.players;
+    let playersArr = this.state.players;
 
     if (turnScore === this.state.zeroValue) {
-      playerArr[this.state.PlayerTurn - 1].currentScore = 0;
+      playersArr[this.state.PlayerTurn - 1].currentScore = 0;
     } else {
-      playerArr[this.state.PlayerTurn - 1].currentScore += turnScore;
+      playersArr[this.state.PlayerTurn - 1].currentScore += turnScore;
     }
-    this.setState({ playerArr });
+    this.setState({ playersArr });
   };
 
   changeTurn = () => {
-    let playerArr = this.state.players;
-    playerArr[this.state.PlayerTurn - 1].totalScore +=
-    playerArr[this.state.PlayerTurn - 1].currentScore;
-    playerArr[this.state.PlayerTurn - 1].currentScore=0;
-    this.setState({ playerArr });
-    if (playerArr[this.state.PlayerTurn - 1].totalScore >= 20) {
-    
+    let playersArr = this.state.players;
+    playersArr[this.state.PlayerTurn - 1].totalScore +=
+      playersArr[this.state.PlayerTurn - 1].currentScore;
+    playersArr[this.state.PlayerTurn - 1].currentScore = 0;
+    this.setState({ playersArr });
+    if (playersArr[this.state.PlayerTurn - 1].totalScore >= 20) {
     } else {
+      playersArr.forEach((player) => {
+        player.isPlaying
+          ? (player.isPlaying = false)
+          : (player.isPlaying = true);
+      });
+
       let changePlayer = this.state.PlayerTurn === 1 ? 2 : 1;
       this.setState({
         PlayerTurn: changePlayer,
+        playersArr,
       });
     }
   };
@@ -67,14 +71,15 @@ class App extends React.Component {
     this.baseState = this.state;
   };
   componentDidUpdate = () => {
-   
+    console.log(this.state.players);
+    console.log(this.baseState);
   };
   render() {
     return (
       <div className="mainContainer">
         <div className="newGame" onClick={this.reset}></div>
         <Player playerData={this.state.players} playerIdx={0} />
-        <GameBoard changeTurn={this.changeTurn} rollDice={this.rollDice} />
+        <GameBoard changeTurn={this.changeTurn} rollDice={this.rollDice} dices={this.state.dices} />
         <Player playerData={this.state.players} playerIdx={1} />
       </div>
     );

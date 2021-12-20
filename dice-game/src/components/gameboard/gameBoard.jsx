@@ -2,7 +2,7 @@ import React from "react";
 import "./gamebord.css";
 import "./loader.css";
 import "../mediaQuery/mobile.css";
-import rollSound from "../assets/sounds/reset.mp3"
+import rollSound from "../assets/sounds/reset.mp3";
 
 //import rollSound from '../../sounds/boop.mp3';
 
@@ -12,30 +12,27 @@ const getRandomNumber = () => {
   let random = Math.floor(Math.random() * (max - min) + min);
   return random;
 };
- const playAudio = () => {
+const playAudio = () => {
   new Audio(rollSound).play();
-}
+};
 
 class gameBoard extends React.Component {
-
   state = {
-    diceFace1:null,
-    diceFace2: null,
-    dicesSum : 0 ,
+    diceFace1: this.props.dices[0],
+    diceFace2: this.props.dices[1],
+    dicesSum: 0,
   };
-  
-   
 
   rollDice = () => {
-    playAudio()
+    playAudio();
     let random1 = getRandomNumber();
     let random2 = getRandomNumber();
-    let sum = random1 + random2 ; 
+    let sum = random1 + random2;
     this.setState({
-      diceFace1: 'loader',
-      diceFace2: 'loader',
-      dicesSum:sum , 
-    }); 
+      diceFace1: "loader",
+      diceFace2: "loader",
+      dicesSum: sum,
+    });
     setTimeout(() => {
       this.setState({
         diceFace1: `face${random1}`,
@@ -45,7 +42,6 @@ class gameBoard extends React.Component {
     setTimeout(() => {
       this.props.rollDice(this.state.dicesSum);
     }, 100);
-  
   };
 
   changeTurn = () => {
@@ -55,9 +51,7 @@ class gameBoard extends React.Component {
   };
 
   componentDidMount = () => {};
-  componentDidUpdate = () => {
-    
-  };
+  componentDidUpdate = () => {};
 
   render() {
     return (
@@ -66,11 +60,10 @@ class gameBoard extends React.Component {
         <div className={`dice ${this.state.diceFace2}`}></div>
         <div className="hold" onClick={this.changeTurn}>
           {" "}
-      
         </div>
         <div className="roll" onClick={this.rollDice}>
-        {" "}
-         <span className="hide">hide content</span>
+          {" "}
+          <span className="hide">hide content</span>
         </div>
       </div>
     );
