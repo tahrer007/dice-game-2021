@@ -9,24 +9,6 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = this.getInitialState();
-    /*this.state = {
-      pointsTowin: 20,
-      zeroValue: 12,
-      dicesSum: 0,
-      dices: [null, null],
-      PlayerTurn: 1,
-      gameOver: false,
-      players: [
-        { id: 1, currentScore: 0, totalScore: 0, isPlaying: true },
-        {
-          id: 2,
-          currentScore: 0,
-          totalScore: 0,
-          isPlaying: false,
-        },
-      ],
-      
-    }*/
   }
 
   getInitialState() {
@@ -70,9 +52,9 @@ class App extends React.Component {
     playersArr[this.state.PlayerTurn - 1].totalScore +=
       playersArr[this.state.PlayerTurn - 1].currentScore;
     playersArr[this.state.PlayerTurn - 1].currentScore = 0;
-     /*this.setState({
+     this.setState({
       players : playersArr,
-    });*/
+    });
 
     if (tempTotalScores >= 20) {
       console.log("yeeeeeees !!! ");
