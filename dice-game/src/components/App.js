@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
+import Winner from "./winner/winner.jsx";
 import IsMobileOrTablet from "./mediaQuery/mobile.jsx";
 import { useState } from "react";
 
@@ -48,22 +49,22 @@ class App extends React.Component {
   ///******************************************************************** */
   changeTurn = () => {
     let playersArr = this.state.players;
-    let tempTotalScores = playersArr[this.state.PlayerTurn - 1].totalScore;
     playersArr[this.state.PlayerTurn - 1].totalScore +=
       playersArr[this.state.PlayerTurn - 1].currentScore;
     playersArr[this.state.PlayerTurn - 1].currentScore = 0;
-     this.setState({
-      players : playersArr,
+    this.setState({
+      players: playersArr,
     });
 
-    if (tempTotalScores >= 20) {
-      console.log("yeeeeeees !!! ");
+    if (
+      this.state.players[this.state.PlayerTurn - 1].totalScore >=
+      this.state.pointsTowin
+    ) {
+      this.setState({
+        gameOver: true,
+      });
     } else {
-      console.log(playersArr)
       playersArr.forEach((player) => {
-        console.log(
-          "player is : " + player.id + " boolan : " + player.isPlaying
-        );
         player.isPlaying
           ? (player.isPlaying = false)
           : (player.isPlaying = true);
@@ -71,17 +72,21 @@ class App extends React.Component {
 
       let changePlayer = this.state.PlayerTurn === 1 ? 2 : 1;
 
-       this.setState({
-          PlayerTurn: changePlayer,
-          players : playersArr,
-        });
+      this.setState({
+        PlayerTurn: changePlayer,
+        players: playersArr,
+      });
     }
   };
   componentDidMount = () => {};
-  componentDidUpdate = () => {
-    console.log(this.state);
-  };
+  componentDidUpdate = () => {};
   render() {
+    if(this.state.gameOver){
+      return <div className="mainContainer">
+          <Winner player={this.state.PlayerTurn}  reset={this.reset}/>
+      </div>
+       
+    }
     return (
       <div className="mainContainer">
         <div className="newGame" onClick={this.reset}></div>
@@ -90,7 +95,9 @@ class App extends React.Component {
           changeTurn={this.changeTurn}
           rollDice={this.rollDice}
           dices={this.state.dices}
+          gameData={this.state}
         />
+
         <Player playerData={this.state.players} playerIdx={1} />
       </div>
     );
