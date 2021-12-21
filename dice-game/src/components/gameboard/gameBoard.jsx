@@ -51,6 +51,7 @@ class gameBoard extends React.Component {
   componentDidMount = () => {};
   componentDidUpdate = () => {
   };
+  
 
   render() {
     return (

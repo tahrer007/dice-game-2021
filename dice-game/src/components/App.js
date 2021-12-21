@@ -4,7 +4,6 @@ import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
 import Winner from "./winner/winner.jsx";
 import IsMobileOrTablet from "./mediaQuery/mobile.jsx";
-import { useState } from "react";
 
 class App extends React.Component {
   constructor() {
@@ -81,11 +80,12 @@ class App extends React.Component {
   componentDidMount = () => {};
   componentDidUpdate = () => {};
   render() {
-    if(this.state.gameOver){
-      return <div className="mainContainer">
-          <Winner player={this.state.PlayerTurn}  reset={this.reset}/>
-      </div>
-       
+    if (this.state.gameOver) {
+      return (
+        <div className="mainContainer">
+          <Winner player={this.state.PlayerTurn} reset={this.reset} />
+        </div>
+      );
     }
     return (
       <div className="mainContainer">
