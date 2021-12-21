@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "./mediaQuery/mobile.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
 import Winner from "./winner/winner.jsx";

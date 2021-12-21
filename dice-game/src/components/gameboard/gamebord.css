@@ -8,6 +8,7 @@
   align-items: center;
   box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   position: relative;
+  box-sizing: border-box;
 }
 .hide{
   visibility: hidden;

@@ -8,7 +8,7 @@
     src: url(./assets/fonts/HARRYP__.TTF);
   }
 .mainContainer{
-    background-color: aquamarine;
+    
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -18,7 +18,7 @@
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     position: relative;
     font-family: HarryPotter;
-    letter-spacing: 0.1em;
+    letter-spacing: 1px;
     box-sizing: border-box;
 }
 .newGame {
