@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.96137c3d.css",
+    "main.js": "/static/js/main.6424c59d.js",
+    "static/media/Trophy_.gif": "/static/media/Trophy_.62c5c3c232eb758e39cc.gif",
+    "static/media/restart.png": "/static/media/restart.8c7f3eb78b6b7139185c.png",
+    "static/media/sfx-victory6.mp3": "/static/media/sfx-victory6.59d74a083634a3b88fc2.mp3",
+    "static/media/HARRYP__.TTF": "/static/media/HARRYP__.a65869c0c1a4b3d4fcfc.TTF",
+    "static/media/switch.png": "/static/media/switch.5f9d826e6f205c032325.png",
+    "static/media/roll.png": "/static/media/roll.cd72f8518d29ec7b286d.png",
+    "static/media/reset.mp3": "/static/media/reset.fcdaf5fad76594874398.mp3",
+    "index.html": "/index.html",
+    "main.96137c3d.css.map": "/static/css/main.96137c3d.css.map",
+    "main.6424c59d.js.map": "/static/js/main.6424c59d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.96137c3d.css",
+    "static/js/main.6424c59d.js"
+  ]
+}
