@@ -10,11 +10,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = this.getInitialState();
+    
   }
 
   getInitialState() {
     return {
-      pointsTowin: 20,
+      pointsTowin: 40,
       zeroValue: 12,
       dicesSum: 0,
       dices: [null, null],
