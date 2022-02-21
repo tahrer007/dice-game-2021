@@ -1,10 +1,8 @@
 import React from "react";
 import "./App.css";
-import "./mediaQuery/mobile.css";
 import GameBoard from "./gameboard/gameBoard";
 import Player from "./players/Player";
 import Winner from "./winner/winner.jsx";
-import IsMobileOrTablet from "./mediaQuery/mobile.jsx";
 
 class App extends React.Component {
   constructor() {

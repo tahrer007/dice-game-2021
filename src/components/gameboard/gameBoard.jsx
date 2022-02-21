@@ -1,7 +1,6 @@
 import React from "react";
 import "./gamebord.css";
 import "./loader.css";
-import "../mediaQuery/mobile.css";
 import rollSound from "../assets/sounds/reset.mp3";
 
 //import rollSound from '../../sounds/boop.mp3';

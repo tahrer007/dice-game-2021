@@ -1,6 +1,5 @@
 import React from "react";
 import "./Player.css";
-import "../mediaQuery/mobile.css";
 const isPlaying = (isplaying) => {
   if (isplaying) return "playing";
   else return "";
